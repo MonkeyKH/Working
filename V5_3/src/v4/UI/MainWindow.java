@@ -12,6 +12,102 @@ public class MainWindow extends javax.swing.JFrame
 {
 
   /**
+   * @return the ButtonAddLine
+   */
+  public javax.swing.JButton getButtonAddLine()
+  {
+    return ButtonAddLine;
+  }
+
+  /**
+   * @return the ButtonOpen
+   */
+  public javax.swing.JButton getButtonOpen()
+  {
+    return ButtonOpen;
+  }
+
+  /**
+   * @return the ButtonRemoveLine
+   */
+  public javax.swing.JButton getButtonRemoveLine()
+  {
+    return ButtonRemoveLine;
+  }
+
+  /**
+   * @return the ButtonSave
+   */
+  public javax.swing.JButton getButtonSave()
+  {
+    return ButtonSave;
+  }
+
+  /**
+   * @return the FileChooserPath
+   */
+  public javax.swing.JFileChooser getFileChooserPath()
+  {
+    return FileChooserPath;
+  }
+
+  /**
+   * @return the MenuAddLine
+   */
+  public javax.swing.JMenuItem getMenuAddLine()
+  {
+    return MenuAddLine;
+  }
+
+  /**
+   * @return the MenuOpen
+   */
+  public javax.swing.JMenuItem getMenuOpen()
+  {
+    return MenuOpen;
+  }
+
+  /**
+   * @return the MenuRemoveLine
+   */
+  public javax.swing.JMenuItem getMenuRemoveLine()
+  {
+    return MenuRemoveLine;
+  }
+
+  /**
+   * @return the MenuSave
+   */
+  public javax.swing.JMenuItem getMenuSave()
+  {
+    return MenuSave;
+  }
+
+  /**
+   * @return the PopUpAddLine
+   */
+  public javax.swing.JMenuItem getPopUpAddLine()
+  {
+    return PopUpAddLine;
+  }
+
+  /**
+   * @return the PopUpDeleteLine
+   */
+  public javax.swing.JMenuItem getPopUpDeleteLine()
+  {
+    return PopUpDeleteLine;
+  }
+
+  /**
+   * @return the PopUpFileExplorer
+   */
+  public javax.swing.JPopupMenu getPopUpFileExplorer()
+  {
+    return PopUpFileExplorer;
+  }
+
+  /**
    * Creates new form MainWindow
    */
   public MainWindow()
