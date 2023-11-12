@@ -5,7 +5,9 @@
 
 package v5_3;
 
+import Controller.MenuListener;
 import v4.UI.MainWindow;
+import adressverwaltung.model.AdressverwaltungModel;
 
 /**
  *
@@ -17,6 +19,8 @@ public class V5_3
   {
   //test
     MainWindow view = new MainWindow();
+    AdressverwaltungModel model = new AdressverwaltungModel();
+    MenuListener listener = new MenuListener(view, model);
     view.setVisible(true);
   }
 
