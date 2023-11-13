@@ -278,7 +278,7 @@ public class MainWindow extends javax.swing.JFrame
         jMenu1.setMnemonic('F');
         jMenu1.setText("File");
 
-        MenuSave.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.SHIFT_DOWN_MASK));
+        MenuSave.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         MenuSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/general/Save16.gif"))); // NOI18N
         MenuSave.setText("Save");
         MenuSave.addActionListener(new java.awt.event.ActionListener() {
@@ -298,7 +298,7 @@ public class MainWindow extends javax.swing.JFrame
         jMenu2.setMnemonic('E');
         jMenu2.setText("Edit");
 
-        MenuAddLine.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.SHIFT_DOWN_MASK));
+        MenuAddLine.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         MenuAddLine.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/general/Add16.gif"))); // NOI18N
         MenuAddLine.setText("Add Line");
         MenuAddLine.addActionListener(new java.awt.event.ActionListener() {
@@ -313,9 +313,9 @@ public class MainWindow extends javax.swing.JFrame
         MenuRemoveLine.setText("Remove Line");
         jMenu2.add(MenuRemoveLine);
 
-        MenuUndo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.SHIFT_DOWN_MASK));
-        MenuUndo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/general/Add16.gif"))); // NOI18N
-        MenuUndo.setText("Add Line");
+        MenuUndo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Z, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        MenuUndo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/general/Undo16.gif"))); // NOI18N
+        MenuUndo.setText("Undo");
         MenuUndo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MenuUndoActionPerformed(evt);

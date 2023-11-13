@@ -8,6 +8,7 @@ package Controller;
 import Controller.CommandInterface;
 import java.awt.Component;
 import java.util.HashMap;
+import java.util.Stack;
 
 /**
  *
@@ -16,9 +17,11 @@ import java.util.HashMap;
 public class CommandInvoker 
 {
   private HashMap<Component, CommandInterface> commands;
+  private Stack <CommandInterface> undoStack;
   public CommandInvoker()
   {
     commands = new HashMap<>();
+    undoStack = new Stack();
   }
   
   public void addCommand(Component key, CommandInterface value)
@@ -27,12 +30,22 @@ public class CommandInvoker
   }
   public void executeCommand(Component key)
   {
-    commands.get(key).execute();
+    var cmd = commands.get(key);
+    cmd.execute();
     
+    undoStack.push(cmd);
   }
   
-  public void undoCommand(Component key)
+  public void undoCommand()
   {
-      commands.get(key).undo();
+      if(undoStack.isEmpty())
+          return;
+      
+      undoStack.pop().undo();
+  }
+  
+  public void clearStack()
+  {
+      undoStack.clear();
   }
 }
