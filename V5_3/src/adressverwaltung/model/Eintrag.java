@@ -14,13 +14,13 @@ public class Eintrag {
     private String name;
     private String nachname;
     
-    public void Eintrag(String nameInp, String nachnameInp)
+    public Eintrag(String nameInp, String nachnameInp)
     {
         name = nameInp;
         nachname = nachnameInp;
     }
     
-    public void Eintrag()
+    public Eintrag()
     {
         name = "Max";
         nachname = "Mustermann";

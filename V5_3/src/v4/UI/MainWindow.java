@@ -12,6 +12,13 @@ public class MainWindow extends javax.swing.JFrame
 {
 
     /**
+     * @return the jLabel1
+     */
+    public javax.swing.JLabel getjLabel1() {
+        return jLabel1;
+    }
+
+    /**
      * @return the jTable1
      */
     public javax.swing.JTable getjTable1() {

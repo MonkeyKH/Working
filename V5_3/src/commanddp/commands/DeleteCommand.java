@@ -28,13 +28,16 @@ public class DeleteCommand implements CommandInterface
   @Override
   public void execute()
   {
-      int focusedRow = view.getjTable1().getSelectedRow();
-      if(focusedRow < 0)
-          model.getColumnCount();
-      else
-      {
-          
-      }
+    int focusedRow = view.getjTable1().getSelectedRow();
+      
+    if(model.getRowCount() < 1)     //exit if no rows in model
+        return;
+    
+    if(focusedRow < 0)              //set row to last item if no selection
+        focusedRow = model.getRowCount() - 1;
+
+    model.deleteRowData(focusedRow);
+      
   }
 
   @Override

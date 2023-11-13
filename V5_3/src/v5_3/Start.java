@@ -13,14 +13,15 @@ import adressverwaltung.model.AdressverwaltungModel;
  *
  * @author Kieran
  */
-public class V5_3 
+public class Start 
 {
-  public V5_3()
+  public Start()
   {
   //test
     MainWindow view = new MainWindow();
     AdressverwaltungModel model = new AdressverwaltungModel();
     CommandController controller = new CommandController(view, model);
+    view.getjTable1().setModel(model);
     controller.registerEvents();
     controller.registerCommands();
     view.setVisible(true);
@@ -28,7 +29,7 @@ public class V5_3
 
   public static void main(String[] args) 
   {
-    new V5_3();
+    new Start();
   }
 
 }
