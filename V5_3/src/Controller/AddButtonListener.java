@@ -45,3 +45,7 @@ public class AddButtonListener implements ActionListener
     invoker.executeCommand(key);
   }
 }
+
+//1: Stopp durch Ausschalten des Publishers
+//2: Verlassen von run
+//3: mit /notify
