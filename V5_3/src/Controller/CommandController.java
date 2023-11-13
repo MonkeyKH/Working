@@ -34,12 +34,15 @@ public class CommandController implements ActionListener
     view.getButtonOpen().addActionListener(this);
     view.getButtonRemoveLine().addActionListener(this);
     view.getButtonSave().addActionListener(this);
+    view.getButtonUndo().addActionListener(this);
     view.getMenuAddLine().addActionListener(this);
     view.getMenuOpen().addActionListener(this);
     view.getMenuRemoveLine().addActionListener(this);
     view.getMenuSave().addActionListener(this);
+    view.getMenuUndo().addActionListener(this);
     view.getPopUpAddLine().addActionListener(this);
     view.getPopUpDeleteLine().addActionListener(this);
+    view.getButtonUndo().addActionListener(this);
   }
 
   public void registerCommands()
@@ -65,6 +68,9 @@ public class CommandController implements ActionListener
   public void actionPerformed(ActionEvent e)
   {
     Component key = (Component)e.getSource();
-    invoker.executeCommand(key);
+    if(key == view.getButtonUndo() || key == view.getMenuUndo())
+        invoker.undoCommand(key);
+    else
+        invoker.executeCommand(key);
   }
 }

@@ -49,6 +49,7 @@ public class OpenFileCommand implements CommandInterface
         model.datenLesen(fc.getSelectedFile());
         view.getjLabel1().setText(filePath);
         model.setPreference("lastDirectory", filePath);
+        model.clearUndoData();
     } catch (IOException ex) {
         Logger.getLogger(OpenFileCommand.class.getName()).log(Level.SEVERE, null, ex);
     } catch (ClassNotFoundException ex) {

@@ -30,4 +30,9 @@ public class CommandInvoker
     commands.get(key).execute();
     
   }
+  
+  public void undoCommand(Component key)
+  {
+      commands.get(key).undo();
+  }
 }

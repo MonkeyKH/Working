@@ -12,6 +12,20 @@ public class MainWindow extends javax.swing.JFrame
 {
 
     /**
+     * @return the MenuUndo
+     */
+    public javax.swing.JMenuItem getMenuUndo() {
+        return MenuUndo;
+    }
+
+    /**
+     * @return the ButtonUndo
+     */
+    public javax.swing.JButton getButtonUndo() {
+        return ButtonUndo;
+    }
+
+    /**
      * @return the jLabel1
      */
     public javax.swing.JLabel getjLabel1() {
@@ -150,6 +164,7 @@ public class MainWindow extends javax.swing.JFrame
         ButtonOpen = new javax.swing.JButton();
         ButtonAddLine = new javax.swing.JButton();
         ButtonRemoveLine = new javax.swing.JButton();
+        ButtonUndo = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -162,6 +177,7 @@ public class MainWindow extends javax.swing.JFrame
         jMenu2 = new javax.swing.JMenu();
         MenuAddLine = new javax.swing.JMenuItem();
         MenuRemoveLine = new javax.swing.JMenuItem();
+        MenuUndo = new javax.swing.JMenuItem();
 
         jTextArea2.setColumns(20);
         jTextArea2.setRows(5);
@@ -224,6 +240,12 @@ public class MainWindow extends javax.swing.JFrame
         ButtonRemoveLine.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         ButtonRemoveLine.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar2.add(ButtonRemoveLine);
+
+        ButtonUndo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/general/Undo16.gif"))); // NOI18N
+        ButtonUndo.setFocusable(false);
+        ButtonUndo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        ButtonUndo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar2.add(ButtonUndo);
         jToolBar2.add(jPanel2);
 
         getContentPane().add(jToolBar2);
@@ -291,6 +313,16 @@ public class MainWindow extends javax.swing.JFrame
         MenuRemoveLine.setText("Remove Line");
         jMenu2.add(MenuRemoveLine);
 
+        MenuUndo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.SHIFT_DOWN_MASK));
+        MenuUndo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/general/Add16.gif"))); // NOI18N
+        MenuUndo.setText("Add Line");
+        MenuUndo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuUndoActionPerformed(evt);
+            }
+        });
+        jMenu2.add(MenuUndo);
+
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
@@ -322,6 +354,10 @@ public class MainWindow extends javax.swing.JFrame
   {//GEN-HEADEREND:event_PopUpAddLineActionPerformed
     // TODO add your handling code here:
   }//GEN-LAST:event_PopUpAddLineActionPerformed
+
+    private void MenuUndoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuUndoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_MenuUndoActionPerformed
 
   /**
    * @param args the command line arguments
@@ -377,11 +413,13 @@ public class MainWindow extends javax.swing.JFrame
     private javax.swing.JButton ButtonOpen;
     private javax.swing.JButton ButtonRemoveLine;
     private javax.swing.JButton ButtonSave;
+    private javax.swing.JButton ButtonUndo;
     private javax.swing.JFileChooser FileChooserPath;
     private javax.swing.JMenuItem MenuAddLine;
     private javax.swing.JMenuItem MenuOpen;
     private javax.swing.JMenuItem MenuRemoveLine;
     private javax.swing.JMenuItem MenuSave;
+    private javax.swing.JMenuItem MenuUndo;
     private javax.swing.JMenuItem PopUpAddLine;
     private javax.swing.JMenuItem PopUpDeleteLine;
     private javax.swing.JPopupMenu PopUpFileExplorer;

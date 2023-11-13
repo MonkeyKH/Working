@@ -5,9 +5,9 @@
 
 package commanddp.commands;
 
-import Controller.CommandInterface;
 import adressverwaltung.model.AdressverwaltungModel;
-import adressverwaltung.model.Eintrag;
+import Controller.CommandInterface;
+import adressverwaltung.model.*;
 import v4.UI.MainWindow;
 
 /**
@@ -18,6 +18,7 @@ public class AddCommand implements CommandInterface
 {
   private MainWindow view;
   private AdressverwaltungModel model;
+  //private UndoDataHolder dataHolder;
   
   public AddCommand(MainWindow viewInput, AdressverwaltungModel modelInput)
   {
@@ -35,14 +36,19 @@ public class AddCommand implements CommandInterface
 
     var tempEintrag = new Eintrag();
     model.insertRowData(focusedRow, tempEintrag.getArray());
+    //dataHolder.pushRowAdd(focusedRow);
+    model.pushRowAdd(focusedRow);
   }
 
   @Override
   public void undo()
   {
-      int focusedRow = view.getjTable1().getSelectedRow();
-//      if(focusedRow < 0)
-//          model.
+      int focusedRow = model.popRowAdd();
+      
+      if(focusedRow < 1)
+          return;           //no rows to undo
+      
+      model.deleteRowData(focusedRow);
   }
 
   @Override

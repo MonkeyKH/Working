@@ -17,6 +17,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Stack;
 import java.util.prefs.Preferences;
 import javax.swing.table.AbstractTableModel;
 
@@ -154,24 +155,109 @@ public class AdressverwaltungModel extends AbstractTableModel
       pref = Preferences.userNodeForPackage(getClass());
       return pref.get(key, null);
   }
+  
+  public UndoDataHolder getUndoDataHolder()
+  {
+      return undoData;
+  }
+  
+  public void pushRowAdd(int addedRow)
+  {
+      undoData.pushRowAdd(addedRow);
+  }
+  
+  public void pushRowDelete(int deletedRow)
+  {
+      undoData.pushRowDelete(deletedRow);
+  }
+  
+  public void pushData(ArrayList<String> data)
+  {
+      undoData.pushData(data);
+  }
+  
+  public int popRowAdd()
+  {
+      return undoData.popRowAdd();
+  }
+  
+  public int popRowDelete()
+  {
+      return undoData.popRowDelete();
+  }
+  
+  public ArrayList<String> popData()
+  {
+      return undoData.popData();
+  }
+  
+  public void clearUndoData()
+  {
+      undoData.clear();
+  }
 }
 
-/**
- * unvollständig! TODO ergänzen!
- * hält Undo-Daten der Command
- * bei z.B. CommandOpen müssen die Daten gelöscht werden (wie auch der Command-Stack)
- * @author le
- */
+
 class UndoDataHolder
 {
-  /** Stack = LIFO = Last In First Out
-   *  Queue = FIFO = First In First Out
-   */
-  private ArrayDeque<ArrayList<String>> stackFuerGeloeschteDatensaetze;
-  // etc.
-  
-  public UndoDataHolder()
-  {
-    stackFuerGeloeschteDatensaetze = new ArrayDeque<>();
-  }
+    /** Stack = LIFO = Last In First Out
+     *  Queue = FIFO = First In First Out
+     */
+    private ArrayDeque<ArrayList<String>> stackFuerGeloeschteDatensaetze;
+    private Stack<Integer> addedRows;
+    private Stack<Integer> deletedRows;
+    // etc.
+
+    public UndoDataHolder()
+    {
+      stackFuerGeloeschteDatensaetze = new ArrayDeque<>();
+      addedRows = new Stack<Integer>();
+      deletedRows = new Stack<Integer>();
+    }
+
+    public void pushRowAdd(int addedRow)
+    {
+        addedRows.push(addedRow);
+    }
+
+    public void pushRowDelete(int deletedRow)
+    {
+        deletedRows.push(deletedRow);
+    }
+
+    public void pushData(ArrayList<String> data)
+    {
+        stackFuerGeloeschteDatensaetze.push(data);
+    }
+
+    public int popRowAdd()
+    {
+        if(addedRows.size() < 1)
+            return -1;
+
+        return addedRows.pop();
+    }
+
+    public int popRowDelete()
+    {
+        if(deletedRows.size() < 1)
+            return -1;
+
+        return deletedRows.pop();
+    }
+
+    public ArrayList<String> popData()
+    {
+        if(stackFuerGeloeschteDatensaetze.size() < 1)
+            return new ArrayList<String>();
+
+        return stackFuerGeloeschteDatensaetze.pop();
+    }
+
+    public void clear()
+    {
+        addedRows.clear();
+        deletedRows.clear();
+        stackFuerGeloeschteDatensaetze.clear();
+    }
 }
