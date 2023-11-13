@@ -7,6 +7,7 @@ package commanddp.commands;
 
 import Controller.CommandInterface;
 import adressverwaltung.model.AdressverwaltungModel;
+import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -31,20 +32,30 @@ public class OpenFileCommand implements CommandInterface
   @Override
   public void execute()
   {
-      var fc = new JFileChooser();
-      int dialogResult = fc.showOpenDialog(view);
-      
-      if(dialogResult != JFileChooser.APPROVE_OPTION)
-          return;
-      
-      try {
-          model.datenLesen(fc.getSelectedFile());
-          view.getjLabel1().setText(fc.getSelectedFile().getAbsolutePath());
-      } catch (IOException ex) {
-          Logger.getLogger(OpenFileCommand.class.getName()).log(Level.SEVERE, null, ex);
-      } catch (ClassNotFoundException ex) {
-          Logger.getLogger(OpenFileCommand.class.getName()).log(Level.SEVERE, null, ex);
-      }
+    var fc = new JFileChooser();
+    var lastDir = model.getPreference("lastDirectory");
+
+    if(lastDir != null)
+        fc.setCurrentDirectory(new File(lastDir));
+
+    int dialogResult = fc.showOpenDialog(view);
+
+    if(dialogResult != JFileChooser.APPROVE_OPTION)   //user cancelled open dialog
+        return;
+
+    var filePath = fc.getSelectedFile().getAbsolutePath();
+
+    try {
+        model.datenLesen(fc.getSelectedFile());
+        view.getjLabel1().setText(filePath);
+        model.setPreference("lastDirectory", filePath);
+    } catch (IOException ex) {
+        Logger.getLogger(OpenFileCommand.class.getName()).log(Level.SEVERE, null, ex);
+    } catch (ClassNotFoundException ex) {
+        Logger.getLogger(OpenFileCommand.class.getName()).log(Level.SEVERE, null, ex);
+    }
+
+    //model.deleteStacks();
   }
 
   @Override

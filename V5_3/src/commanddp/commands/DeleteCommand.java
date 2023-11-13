@@ -37,7 +37,6 @@ public class DeleteCommand implements CommandInterface
         focusedRow = model.getRowCount() - 1;
 
     model.deleteRowData(focusedRow);
-      
   }
 
   @Override

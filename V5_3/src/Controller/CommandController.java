@@ -34,14 +34,31 @@ public class CommandController implements ActionListener
     view.getButtonOpen().addActionListener(this);
     view.getButtonRemoveLine().addActionListener(this);
     view.getButtonSave().addActionListener(this);
+    view.getMenuAddLine().addActionListener(this);
+    view.getMenuOpen().addActionListener(this);
+    view.getMenuRemoveLine().addActionListener(this);
+    view.getMenuSave().addActionListener(this);
+    view.getPopUpAddLine().addActionListener(this);
+    view.getPopUpDeleteLine().addActionListener(this);
   }
 
   public void registerCommands()
   {
-    invoker.addCommand(view.getButtonAddLine(), new AddCommand(view, model));
-    invoker.addCommand(view.getButtonOpen(), new OpenFileCommand(view, model));
-    invoker.addCommand(view.getButtonRemoveLine(), new DeleteCommand(view, model));
-    invoker.addCommand(view.getButtonSave(), new SaveFileCommand(view, model));
+    var addCommand = new AddCommand(view, model);
+    var openFileCommand = new OpenFileCommand(view, model);
+    var deleteCommand = new DeleteCommand(view, model);
+    var saveFileCommand = new SaveFileCommand(view, model);
+      
+    invoker.addCommand(view.getButtonAddLine(), addCommand);
+    invoker.addCommand(view.getButtonOpen(), openFileCommand);
+    invoker.addCommand(view.getButtonRemoveLine(), deleteCommand);
+    invoker.addCommand(view.getButtonSave(), saveFileCommand);
+    invoker.addCommand(view.getMenuAddLine(), addCommand);
+    invoker.addCommand(view.getMenuOpen(), openFileCommand);
+    invoker.addCommand(view.getMenuRemoveLine(), deleteCommand);
+    invoker.addCommand(view.getMenuSave(), saveFileCommand);
+    invoker.addCommand(view.getPopUpAddLine(), addCommand);
+    invoker.addCommand(view.getPopUpDeleteLine(), deleteCommand);
   }
   
   @Override

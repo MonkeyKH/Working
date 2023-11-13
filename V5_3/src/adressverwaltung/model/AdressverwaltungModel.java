@@ -17,6 +17,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.prefs.Preferences;
 import javax.swing.table.AbstractTableModel;
 
 /**
@@ -29,7 +30,7 @@ public class AdressverwaltungModel extends AbstractTableModel
   private ArrayList<String> adressEintraegeDaten;
   private ArrayList<String> adressEintraegeNamen;
   private UndoDataHolder undoData;
-  //Preferences TODO!
+  private Preferences pref;
   
   public AdressverwaltungModel()
   {
@@ -141,6 +142,17 @@ public class AdressverwaltungModel extends AbstractTableModel
     ois.close();
     this.fireTableDataChanged();
     // evtl. this.fireTableStructureChanged();
+  }
+  
+  public void setPreference(String key, String value)
+  {
+      pref.put(key, value);
+  }
+  
+  public String getPreference(String key)
+  {
+      pref = Preferences.userNodeForPackage(getClass());
+      return pref.get(key, null);
   }
 }
 
