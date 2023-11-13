@@ -7,6 +7,7 @@ package commanddp.commands;
 
 import Controller.CommandInterface;
 import adressverwaltung.model.AdressverwaltungModel;
+import jdk.jshell.spi.ExecutionControl.NotImplementedException;
 import v4.UI.MainWindow;
 
 /**
@@ -20,13 +21,20 @@ public class DeleteCommand implements CommandInterface
   
   public DeleteCommand(MainWindow viewInput, AdressverwaltungModel modelInput)
   {
-    viewInput = view;
-    modelInput = model;
+    view = viewInput;
+    model = modelInput;
   }
 
   @Override
   public void execute()
   {
+      int focusedRow = view.getjTable1().getSelectedRow();
+      if(focusedRow < 0)
+          model.getColumnCount();
+      else
+      {
+          
+      }
   }
 
   @Override

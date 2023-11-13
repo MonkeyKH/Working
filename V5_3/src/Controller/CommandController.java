@@ -6,6 +6,7 @@
 package Controller;
 
 import adressverwaltung.model.AdressverwaltungModel;
+import commanddp.commands.*;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -29,12 +30,18 @@ public class CommandController implements ActionListener
   }
   public void registerEvents()
   {
-    
+    view.getButtonAddLine().addActionListener(this);
+    view.getButtonOpen().addActionListener(this);
+    view.getButtonRemoveLine().addActionListener(this);
+    view.getButtonSave().addActionListener(this);
   }
 
   public void registerCommands()
   {
-    
+    invoker.addCommand(view.getButtonAddLine(), new AddCommand(view, model));
+    invoker.addCommand(view.getButtonOpen(), new OpenFileCommand(view, model));
+    invoker.addCommand(view.getButtonRemoveLine(), new DeleteCommand(view, model));
+    invoker.addCommand(view.getButtonSave(), new SaveFileCommand(view, model));
   }
   
   @Override

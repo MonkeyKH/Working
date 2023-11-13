@@ -5,7 +5,7 @@
 
 package v5_3;
 
-import Controller.MenuListener;
+import Controller.CommandController;
 import v4.UI.MainWindow;
 import adressverwaltung.model.AdressverwaltungModel;
 
@@ -20,7 +20,9 @@ public class V5_3
   //test
     MainWindow view = new MainWindow();
     AdressverwaltungModel model = new AdressverwaltungModel();
-    MenuListener listener = new MenuListener(view, model);
+    CommandController controller = new CommandController(view, model);
+    controller.registerEvents();
+    controller.registerCommands();
     view.setVisible(true);
   }
 
