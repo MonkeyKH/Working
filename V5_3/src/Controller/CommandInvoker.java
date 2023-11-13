@@ -3,8 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 
-package commanddp.commands;
+package Controller;
 
+import Controller.CommandInterface;
 import java.awt.Component;
 import java.util.HashMap;
 

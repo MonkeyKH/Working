@@ -6,7 +6,6 @@
 package Controller;
 
 import adressverwaltung.model.AdressverwaltungModel;
-import commanddp.commands.*;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,13 +15,13 @@ import v4.UI.MainWindow;
  *
  * @author Bleich
  */
-public class AddButtonListener implements ActionListener
+public class CommandController implements ActionListener
 {
   private MainWindow view;
   private AdressverwaltungModel model;
   private CommandInvoker invoker;
   
-  public AddButtonListener(MainWindow viewInput, AdressverwaltungModel modelInput)
+  public CommandController(MainWindow viewInput, AdressverwaltungModel modelInput)
   {
     view = viewInput;
     model = modelInput;
@@ -30,12 +29,12 @@ public class AddButtonListener implements ActionListener
   }
   public void registerEvents()
   {
-      view.getButtonAddLine().addActionListener(this);
+    
   }
 
   public void registerCommands()
   {
-    invoker.addCommand(view.getButtonAddLine(), new AddCommand(view, model));
+    
   }
   
   @Override
@@ -45,7 +44,3 @@ public class AddButtonListener implements ActionListener
     invoker.executeCommand(key);
   }
 }
-
-//1: Stopp durch Ausschalten des Publishers
-//2: Verlassen von run
-//3: mit /notify
