@@ -28,14 +28,13 @@ public class AddCommand implements CommandInterface
   @Override
   public void execute()
   {
-      int focusedRow = view.getjTable1().getSelectedRow();
-      if(focusedRow < 0)
-          model.leerenAdressEintragAnhaengen();
-      else
-      {
-          var tempEintrag = new Eintrag();
-          model.insertRowData(focusedRow, tempEintrag.getArray());
-      }
+    int focusedRow = view.getjTable1().getSelectedRow();
+      
+    if(focusedRow < 0)              //set row to last item if no selection
+        focusedRow = model.getRowCount();
+
+    var tempEintrag = new Eintrag();
+    model.insertRowData(focusedRow, tempEintrag.getArray());
   }
 
   @Override
