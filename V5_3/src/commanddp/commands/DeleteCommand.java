@@ -5,6 +5,7 @@
 
 package commanddp.commands;
 
+import Controller.CommandInterface;
 import adressverwaltung.model.AdressverwaltungModel;
 import v4.UI.MainWindow;
 
