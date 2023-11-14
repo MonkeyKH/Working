@@ -45,7 +45,7 @@ public class AddCommand implements CommandInterface
   {
       int focusedRow = model.popRowAdd();
       
-      if(focusedRow < 1)
+      if(focusedRow < 0)
           return;           //no rows to undo
       
       model.deleteRowData(focusedRow);

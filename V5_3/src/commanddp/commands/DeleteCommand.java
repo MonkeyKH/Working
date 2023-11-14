@@ -36,12 +36,20 @@ public class DeleteCommand implements CommandInterface
     if(focusedRow < 0)              //set row to last item if no selection
         focusedRow = model.getRowCount() - 1;
 
+    model.pushRowDelete(focusedRow);
+    model.pushData(model.getRowData(focusedRow));
     model.deleteRowData(focusedRow);
   }
 
   @Override
   public void undo()
   {
+      int focusedRow = model.popRowDelete();
+      
+      if(focusedRow < 0)
+          return;
+      
+      model.insertRowData(focusedRow, model.popData());
   }
 
   @Override
