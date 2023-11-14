@@ -12,7 +12,7 @@ import java.util.Stack;
  *
  * @author dblei
  */
-class UndoDataHolder
+public class UndoDataHolder
 {
     /** Stack = LIFO = Last In First Out
      *  Queue = FIFO = First In First Out
